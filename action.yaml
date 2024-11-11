@@ -3,7 +3,7 @@ description: TTT WireGuard Connection Configuration
 
 inputs:
   WG_CONFIG:
-    required: false
+    required: true
     description: TTT WireGuard (wg-quick) configuration secret file
 
 runs:
@@ -12,7 +12,7 @@ runs:
     - run: |
         sudo apt install resolvconf
         sudo apt install wireguard
-        echo "${{ env.WG_CONFIG || secrets.WG_CONFIG }}" >wg0.conf
+        echo "${{ inputs.WG_CONFIG }}" >wg0.conf
         sudo chmod 600 wg0.conf
         sudo wg-quick up ./wg0.conf
       shell: bash
