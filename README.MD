@@ -39,5 +39,5 @@ jobs:
     - name: Set up WireGuard Connection
       uses: Cardtonic-Technologies/ttt-wireguard@v1
       with:
-        WG_CONFIG_FILE: ${{ secrets.WG_CONFIG }}
+        WG_CONFIG: ${{ secrets.WG_CONFIG }}
 ```
