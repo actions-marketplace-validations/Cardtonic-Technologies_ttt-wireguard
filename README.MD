@@ -1,6 +1,6 @@
 # TTT WireGuard
 
-Simplified WireGuard GitHub Action using `wg-quick`. Requires WireGuard configuration file as input, or defaults to `secrets.WG_CONFIG`(must have set this secret in organization secrets) to get your connection up and running.
+Simplified WireGuard GitHub Action using `wg-quick`. Requires WireGuard configuration file as input (`WG_CONFIG`) to get your connection up and running.
 
 ## Example Secret Config
 ```text
@@ -33,11 +33,11 @@ jobs:
   wireguard:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up WireGuard Connection
-      uses: Cardtonic-Technologies/ttt-wireguard@main
-      with:
-        WG_CONFIG: ${{ secrets.WG_CONFIG }}
+      - name: Set up WireGuard Connection
+        uses: Cardtonic-Technologies/ttt-wireguard@main
+        with:
+          WG_CONFIG: ${{ secrets.WG_CONFIG }}
 ```
