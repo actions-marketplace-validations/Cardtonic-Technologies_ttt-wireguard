@@ -4,14 +4,13 @@ description: TTT WireGuard Connection Configuration
 inputs:
   WG_CONFIG:
     required: false
-    default: "${{ secrets.WG_CONFIG }}"
     description: TTT WireGuard (wg-quick) configuration secret file
 
 runs:
   using: composite
   steps:
-    - name: Set environment variables
-      run: echo "MY_INPUT=${{ inputs.WG_CONFIG || secrets.WG_CONFIG }}" >>$GITHUB_ENV
+    - name: Set default environment variables
+      run: echo "WG_CONFIG=${{ inputs.WG_CONFIG || secrets.WG_CONFIG }}" >>$GITHUB_ENV
       shell: bash
 
     - run: |
