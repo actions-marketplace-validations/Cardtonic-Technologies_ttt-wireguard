@@ -37,7 +37,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up WireGuard Connection
-      uses: Cardtonic-Technologies/ttt-wireguard@v1
+      uses: Cardtonic-Technologies/ttt-wireguard@main
       with:
         WG_CONFIG: ${{ secrets.WG_CONFIG }}
 ```
