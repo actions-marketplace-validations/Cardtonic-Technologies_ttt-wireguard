@@ -1,0 +1,23 @@
+name: TTT WireGuard
+description: TTT WireGuard Connection Configuration
+
+inputs:
+  WG_CONFIG:
+    required: true
+    default: "${{ secrets.WG_CONFIG }}"
+    description: TTT WireGuard (wg-quick) configuration secret file
+
+runs:
+  using: composite
+  steps:
+    - run: |
+        sudo apt install resolvconf
+        sudo apt install wireguard
+        echo "${{ inputs.WG_CONFIG }}" >wg0.conf
+        sudo chmod 600 wg0.conf
+        sudo wg-quick up ./wg0.conf
+      shell: bash
+
+branding:
+  icon: shield
+  color: green
